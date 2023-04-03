@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arithmatic method</title>
+</head>
+<body>
+    <script>
+        var num = 3;
+        console.log(27 % 5);
+        console.log(num**3);//거듭제곱 ES7부터 사용
+        console.log(Math.pow(num,3));//java의 거듭제곱 
+
+        console.log('----------------------');
+        
+        //단항산술연산자 ++, --...
+        var x=3;
+        x++;
+        ++x;
+        x--;
+
+        //전위연산(Prefix), 후위연산(Postifx)
+        var a =10, result;
+        result = a++; //선연산 후증강(후위연산(Postifx))
+        console.log(`result: ${result}, a: ${a}`);
+        
+        result = ++a; //선증강 후연산(전위연산(Prefix))
+        console.log(`result: ${result}, a: ${a}`);
+    </script>
+    
+</body>
+</html>

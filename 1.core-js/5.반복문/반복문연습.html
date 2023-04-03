@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Math.random;  //랜덤
+        // Math.floor(); //내림
+        // Math.ceil();  //올림
+        // Math.round(); //반올림
+        var total;
+        var rn1 = Math.floor((Math.random()*20)+1);
+        var rn2 = Math.floor((Math.random()*20)+1);
+        var rnM = Math.floor((Math.random()*2)+1);
+        if(rnM>=3){
+            rnM = '+';
+            total = rn1+ rn2;
+        } else if(rnM>=2){
+            rnM = '-';
+            total = rn1-rn2;
+        } else{
+            rnM = 'x'
+            total = rn1*rn2;
+        }
+
+        var answer = prompt(`${rn1} ${rnM} ${rn2} = ??? `);
+        if(total == answer){
+            alert('정답입니다.');
+        } else if(answer =='그만'){ /* 만약 === 이면 타입까지 고려하기떄문에 ==로 처리 */
+            alert('종료합니다.');
+        } else{
+            alert('오답입니다.');
+        }
+    </script>
+</body>
+</html>

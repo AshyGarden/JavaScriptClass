@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuncBasic</title>
+</head>
+<body>
+    <script>
+        //함수 선언: 함수 이름은 동사적 기능ㅣ 내포되게 적는것이 관례
+        //리턴타입도 존재하지 않는다.
+        function calcTotal(x){
+            console.log('함수 호출!');
+            var total = 0;
+            for(var n=1; n<=x; n++){
+                total+=n;
+            }
+            return total;
+        };
+        console.log(calcTotal(10));
+
+        var result = calcTotal(50);
+        console.log(result);
+        
+        function add(n1, n2){
+            return n1+n2;
+        }
+        var add1 = add(50,51);
+        console.log(add1);
+        
+        //함수를 리터럴 방식으로 선언.
+        var add2 = function(n1, n2){
+            return n1+n2;
+        } //익명 함수로 제작= 변수에 할당 하는것도 가능!
+
+        //화살표 함수(ES6)
+        var add3 = (n1, n2) =>{/* function생략 대신 => */
+            return n1+n2;
+        }
+        
+        //화살표 함수2(ES6)
+        var add4 = (n1, n2) => n1+n2; //내부코드가 1줄일 경우= 중괄호, return도 생략가능
+        
+        console.log(add2(10,20));
+        console.log(add3(20,30));
+        console.log(add4(40,20));
+
+        //함수를 변수에 할당가능.
+        var ct = calcTotal;
+        var result2 = ct(200);
+        console.log('result2: '+ result2);
+
+    </script>
+    
+</body>
+</html>

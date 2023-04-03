@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const</title>
+</head>
+<body>
+    <script>
+        const x ='메롱';
+        console.log(x);
+        //x='안메롱';/* 오류남 - const값은 불변값(값 변경불가) */
+
+        //const와 객체(객체, 배열, 함수)
+        const person = {
+            name: 'park',
+            age: 20
+        }
+
+        //객체 프로퍼티 값변경 = 가능
+        person.name ='kim'; /* person.name이 바꾼것, person이 바꾸진 않음! = 따라서 가능한 문법 */
+        console.log(person.name);
+
+        //객체 자체변경 = 불가능
+        person = {/* error - 객체 자체(주소값)를 바꾸려고 하는 경우 = 오류 */
+            name: 'lee',
+            age:30
+        }
+    </script>
+</body>
+</html>

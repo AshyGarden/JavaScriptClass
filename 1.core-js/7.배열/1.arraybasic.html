@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arraybasic</title>
+</head>
+<body>
+    <script>
+
+        //배열의 생성
+        var friuts = ['딸기', '포도', '복숭아', '사과'];/* JS배열은 크기가 동적! */
+
+        //배열의 길이 확인
+        console.log('배열의 길이: ' + friuts.length);
+        
+        //배열에 데이터 추가
+        friuts[4] = '파인애플';
+        console.log(friuts);
+        console.log('배열의 길이: ' + friuts.length);
+
+        friuts[friuts.length] = '망고'; //배열의 길이 = 마지막 인덱스+1 = 바로 다음의 위치에 추가
+        console.log(friuts);
+
+        //배열요소참조
+        var apple = friuts[3];
+
+        //배열의 반복문 처리
+        for(var i = 0; i<friuts.length; i++){
+            console.log(`${i+1}번째 과일: ${friuts[i]}`);
+        }
+
+
+    </script>
+    
+</body>
+</html>

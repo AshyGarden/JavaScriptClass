@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VariousFunction</title>
+</head>
+<body>
+    <script>
+        //즉시실행함수(정의와 동시에 실행되는 함수)
+        (function(x,y){ /* 선언 */
+            console.log(`x+y = ${x+y}`);
+        })(60,70); /* 호출 */
+
+        console.log('---------------------------------------');
+        //재귀함수(자기자신을 다시 호출하여 작업을 수행하는 함수)
+        //재귀함수에서는 종료조건을 직접 작성해야한다.
+        function countdown(n){
+            if(n<0) return;
+            console.log(n);
+            countdown(n - 1);/* 최소수치가 필요 */
+        }
+        countdown(5);
+        
+        function factorial(n){
+            if(n === 1) return 1;
+            return n * factorial(n-1);
+        }
+        console.log(factorial(6));
+        console.log('---------------------------------------');
+
+        //중첩함수
+        function outer(){
+
+            var x=1;
+
+            function inner(){/* 헬퍼 함수 */
+                var y =2;
+                console.log(x+y);
+            }
+            inner();/* outer를 부르기 전까진 호출x */
+        }
+
+        //inner();/* outer가 있어야 부를수 있음 */
+        outer();
+        //console.log(y);//y는 inner안에서만 사용가능
+
+    </script>
+</body>
+</html>

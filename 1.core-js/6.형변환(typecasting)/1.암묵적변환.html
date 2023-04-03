@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>암묵적 변환</title>
+</head>
+<body>
+    <script>
+
+        var ex = 10+'20';
+        console.log('ex: '+ex);
+        /* 숫자+문자 =  연산규칙이 존재   = 연결되서 출력 = 1020 */
+        
+        var ex2 = 10 * '3';
+        console.log('ex2: '+ex2);
+        /* 숫자 * 문자 = 연산규칙이 존재x = 변환해서 결과를 출력 = 30 */
+
+        var ex3 = 100 + '';
+        console.log('ex3: '+typeof ex3);
+        /* 숫자 + 공백 = 연산규칙이 존재  = string 변환해서 결과를 출력 = string */
+
+        //문자열 타입의 암묵적 숫자 변환
+        var ex4 = +'550';
+        console.log(ex4);
+        console.log('ex4: '+typeof ex4);
+        /* 문자열앞에 '+기호'를 붙이면(좌항에 아무것도 적지않아야 함)= 숫자로 변환해줌 */
+
+        //논리타입을 암묵적 숫자 변환
+        var ex5 = +'false'; //동작x (NaN)
+        var ex6 = +false;   //동작o (0)
+        console.log(ex5);
+        console.log(ex6);
+        
+        var ex7 = +true;    //동작o (1)   
+        console.log(ex7);
+        
+        ex7 = +null;
+        console.log(ex7);   //동작o (null = 그냥 0 으로 출력)
+        
+        ex7 = +NaN;
+        console.log(ex7);   //동작o (그냥 NaN 으로 출력)
+
+
+
+    </script>
+</body>
+</html>

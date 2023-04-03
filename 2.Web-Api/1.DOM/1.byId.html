@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByID</title>
+</head>
+
+<body>
+
+    <ul>
+        <li id="apple">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="grape">Grape</li>
+        <li id="pine">Pine</li>
+    </ul>
+
+    <script>
+        //관례적으로 노드변수는 이름앞에 $기호를 붙입니다.
+        const $apple = document.getElementById("apple");/* ID = 고유값 = 1개만존재 */
+        console.log($apple);
+        console.log($apple.attributes);
+
+        $apple.style.fontSize = '40px';
+        document.body.style.background = 'tomato';
+
+        //없는 아이디 취득
+        const $item = document.getElementById("wow");
+        console.log($item); /* 없는 요소 = null */
+
+        //있는 아이디 
+        const $item2 = document.getElementById('banana');
+        console.log($item2); /* 없는 요소 = null */
+
+        if ($item2 !== null) {
+            $item2.style.color = 'yellow';
+        }
+
+        //요소에 id부여시 아이디 값으로 자동전역변수가 생성됨
+        grape.style.color = 'violet';//많이 사용하진 않음
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComparisonOperator</title>
+</head>
+<body>
+    <script>
+
+        var a = 5, b= '5';
+        console.log(a==b);  /* 일치비교 = true(문자열 내부에 숫자가 있다면 타입을 변환해 비교함) */
+        console.log(a===b); /* 타입까지 고려한 일치비교 = false */
+        console.log('----------------------');
+
+        //동등비교는 결과예측이 힘들기 떄문에 조심히 사용해야함
+        console.log('0' == '');
+        console.log( 0 == ''); /* 공백문자열을 0으로 변환 =true */
+        
+        console.log(0 == '');  //문자열 내부에 숫자가 있다면 타입을 변환해 비교함
+        console.log(0 == '0'); //문자열 내부에 숫자가 있다면 타입을 변환해 비교함
+        
+        console.log(false == 'false'); /* 문자열은 변환 안함=false */
+        console.log(false == '0');  /* false값은 0 = true */
+
+        //NaN = 자신과 일치하지 않는 유일한 값! */
+
+        console.log(NaN === NaN); /* false (숫자가 아닌 타입중 하나라는 인식)*/
+        console.log('----------------------');
+
+        //문자열 비교(유니코드 문자번호기준)
+        //영어 대문자(65~)< 영어 소문자(92~)<<<한글(44032~)
+        //같은 문자일경우 사전등재 순서로 판단
+        console.log('apple'==='APPLE'); /* false=대소문자 비교 */
+        console.log('peach'<'zebra');   /* 알파벳이 먼저나올수록 작음! p<z */
+        console.log('안녕'<'헬로');      /* 한글도 가능! ㅇ<ㅎ */
+
+        console.log('peach'<'Zebra');   /* 대문자가 숫자가 더 작음! Z<p */
+        </script>
+    
+</body>
+</html>

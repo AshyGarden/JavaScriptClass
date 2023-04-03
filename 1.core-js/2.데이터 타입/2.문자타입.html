@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stringtype</title>
+</head>
+<body>
+
+    <ul>
+        <li>
+            <a href="#">Home</a>
+        </li>
+    </ul>
+    <script>
+        
+        var greetings;
+        greetings = "안녕하세요";//(o)/* 쌍따옴표도 문자로 인정함. */
+        greetings = '하이!'/* JS는 주로 홑따옴표사용! */
+        greetings = `반갑습니다.`/* 백틱기호(1번 옆에 점 버튼)도 문자로 인정 */
+
+        var ex_str = "그는 나에게 \"위험해!\" 라고 말했다."; //java식 표기법
+        var ex_str = '그는 나에게 "위험해!" 라고 말했다.';   //js식 표기법
+
+        var temp;
+
+        //탬플릿 리터럴:백틱(`)으로 감싼 문자열
+        //공백 들여쓰기 줄개행등을 모두 문자로 인정해줌.
+        temp =`<ul>
+        <li>
+            <a href="#">Home</a>
+        </li>
+    </ul>`; //신문법(백틱안에 작성시 탈출코드 없이 줄개행,공백등을  인정해줌!)
+        console.log(temp);
+
+        console.log('---------------------');
+
+        var month = 12;
+        var day = 25;
+        var anni = '크리스마스';
+        console.log(month+'월 '+day+'일은 '+anni+'입니다.'); //java식 
+
+        //탬플릿 리터럴을 이용한 포맷팅 출력 방식
+        console.log(`${month}월 ${day}일은 ${anni}입니다.`);
+    </script>
+    
+</body>
+</html>

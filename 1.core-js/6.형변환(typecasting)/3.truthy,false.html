@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truthy-falsthy</title>
+</head>
+<body>
+    <script>
+        //JS는 if문안에 별의별것이 다들어갈수있음  
+        if('') console.log('ok1'); //길이 0의 문자열 - false(출력x)
+        if('hello') console.log('ok2'); //문자열 - true(출력)
+        if(undefined) console.log('ok3'); //undefined - false(출력x)
+        if(null) console.log('ok4'); //null - false(출력x)
+        if(350) console.log('ok5');  //숫자 - true(출력)
+        if(NaN) console.log('ok6');  //숫자가 아닌 무언가 - false(출력x)
+        if(0) console.log('ok7');    //0 -false(출력x)
+        if([1,2,3]) console.log('ok8');//숫자열 - true(출력)
+
+        //undefined, null, 0, NaN, ''(빈 문자열)모두 false
+        //나머지는 모두 true
+        //함수의 리턴, 비동기 통신의 결과값들이 정확하게 어떤값인지 모를 경우에 유용
+        //해당값이 띄고 있는 논리적 평가에 따라 조건문을 좀더 수월하게 구성할 수 있음
+
+    </script>
+</body>
+</html>

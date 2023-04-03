@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+</head>
+<body>
+    <script>
+        function showEvenNum(n){
+            for(var i =0; i<n; i++){
+                if(i%2===0){
+                    console.log(i);
+                }
+            }
+        }
+       /*  function showOddNum(n){
+            for(var i =0; i<n; i++){
+                if(i%2 !==0){
+                    console.log(i);
+                }
+            }
+        } */
+         /*function showEvenOrOddNum(n, delimiter){/* delimiter = 0 or 1 
+            for(var i =0; i<n; i++){
+                if(i%2 === delimiter){
+                    console.log(i);
+                }
+            }
+        } */
+        function showNum(n,callback){
+            for(var i=i; i<n; i++){
+                if(callback(i)){/* 함수의 매개값으로 함수를 보냄 */
+                    console(i);
+                }
+            }
+
+        }
+        //1~10까지 정수중 짝수만 출력하기
+        showNum(10,function(n){
+            n%2===0;
+        })
+
+        //1~200까지의 정수중 5의배수면서 10의배수는 아닌거
+        showNum(200, function(n){+;
+            return n% 5===00 && n%10!==0;});
+            //객체나 배열을 다른 기본데이터로 패치하는 작업;
+
+
+
+
+    </script>
+</body>
+</html>

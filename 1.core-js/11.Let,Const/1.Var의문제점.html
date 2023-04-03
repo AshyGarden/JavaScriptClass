@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Var의문제점</title>
+</head>
+<body>
+    <script>
+        
+        //1. 중복선언을 허용: 동일이름 변수가 선언되닞 모르고 변수를 중복선언하면 
+        //의도치않게 변수의 값이 변경되는 부작용이 발생할수있다.
+
+        var x = 1;
+        var x = 100;
+        console.log(x);
+
+        //2. 블록레벨 스코프를 지원하지 않습니다. (함수만 블록으로 인정)
+        //var키워드는 오로지 함수의 영역만을 지역스코프로 인식
+        //따라서, 함수외의 블록들에서는 모두 전역변수로 일괄적용
+        //전혀 관련없는 변수값이 사용될수도 있고 전역변수 남용가능성이 높아짐
+        var i=1;
+        for(var i=0; i<10; i++){
+
+        }
+        console.log(i);
+        
+        
+        var flag = true;
+        if(flag){
+            var temp;
+        }
+        console.log(temp);
+        
+        //3. 변수 호이스팅: var키워드로 변수 선언시, 변수선언문이 자동으로 맨위로 끌어올려진것처럼 동작
+        //흐름해석에 방해되어 가독성과 유지보수성을 현격히 떨어뜨림
+        y=100;
+        console.log('y+'+y);
+        var y;
+
+    </script>
+</body>
+</html>
