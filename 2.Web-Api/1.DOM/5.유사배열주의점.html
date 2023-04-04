@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유사배열주의점</title>
+
+    <style>
+        ul>li{
+            font-size: 30px;
+        }
+        .fruit{
+            color: violet;
+        }
+    </style>
+</head>
+<body>
+    <ul id="fruits">
+        <li class="fruit">Apple</li>
+        <li class="fruit">Banana</li>
+        <li class="fruit">Grape</li>
+        <li class="fruit">PineApple</li>
+    </ul>
+    <script>
+        //유사배열 NodeList리턴
+        const $elem = document.querySelectorAll('.fruit');
+
+        //유사배열 htmlcollection 리턴
+        const $elem2 = document.getElementsByClassName('fruit');
+
+        //배열이 아니다!
+        // let $ele = $elem2.pop();
+
+        //유사배열 객체를 배열처럼 제어하기
+        //순수배열로 변경해서 쓰기(ES6 이전)
+        const realArray = Array.from($elem2); 
+        let $ele = realArray.pop();    
+        console.log($ele);
+        console.log(realArray);
+
+        //ES6이후 - 구조분해 할당후 배열에 할당
+        const realArray2 = [...$elem2]; 
+        let $ele2 = realArray2.pop();
+        console.log($ele2);
+        console.log(realArray2);
+
+        for(let $e of [...$elem2]){/* 안정적인 문법 */
+            $e.style.fontStyle = 'italic';
+        }
+
+    </script>
+    
+</body>
+</html>

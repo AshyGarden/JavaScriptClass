@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuerySelector</title>
+</head>
+
+<body>
+    <ul id="fruits">
+        <li class="fruit apple">Apple</li>
+        <li class="fruit banana">Banana</li>
+        <li class="fruit grape">Grape</li>
+        <li class="fruit pine">PineApple</li>
+    </ul>
+    <script>
+        //query selector = 제일 정확하게 지목할수있음.
+        const $elem = document.querySelector('.banana'); //클래스 이름이 바나나
+        const $elem2 = document.querySelector('#fruits > li:nth-child(2)'); //id가 fruits중 2번쨰 자식!
+        const $elem3 = document.querySelector('li.apple+li'); //li apple요소의 바로다음 형제li
+        const $elem4 = document.querySelector('li[class="fruit banana"]'); //클래스 이름이 바나나
+
+        $elem.style.color = 'yellow';
+
+        console.log($elem); //요소만 정확히 옴
+        console.log($elem2);
+        console.log($elem3);
+        console.log($elem4);
+
+        const $elem5 = document.querySelectorAll('#fruits > li'); //li 모두 부르기(배열 아님!)
+        console.log($elem5);
+
+        for (let $ele of $elem5) {
+            $ele.style.background = 'red';
+        }
+
+        //querySelector로 없는 선택자 지목시 null
+        const $elem6 = document.querySelector('.peach');
+        console.log($elem6);
+        
+        //querySelectorAll로 없는 선택자 지목시 빈 노드리스트가 불림
+        const $elem7 = document.querySelectorAll('.peach');
+        console.log($elem7);
+    </script>
+</body>
+
+</html>

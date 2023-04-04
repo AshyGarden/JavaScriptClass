@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.자식노드탐색</title>
+</head>
+<body>
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+        <li class="banana">Banana</li>
+        <li class="grape">Grape</li>
+    </ul>
+
+    <div id="test">
+
+    </div>
+
+    <script>
+        //노드 탐색의 기점이 되는 ul요소 취득
+        const $fruits = document.getElementById('fruits');
+
+        //기준 노드의 모든 자식노드를 탐색(텍스트 노드를 포함)
+        const $childNodes = $fruits.childNodes;
+        console.log($childNodes); //Nodelist = ul이 공백을 text로 가짐=모두 탐색(7개)
+ 
+        //기준 노드의 모든 자식노드를 탐색(텍스트 노드를 제외<-권장)
+        const $children = $fruits.children;
+        console.log($children); //HTMLCollection
+
+        //기준 노드의 첫번째 자식노드 탐색
+        //firstchild는 text노드가 나올가능성이있음!
+        const $firstChild = $fruits.firstChild;
+        console.log($firstChild); 
+
+        //기준 노드의 첫번째 자식노드 탐색(요소만 선택)
+        console.log('first-element-child: '+$fruits.firstElementChild);
+        //기준 노드의 마지막 자식노드 탐색(요소만 선택)
+        console.log('last-element-child: '+$fruits.lastElementChild);
+
+        //기준노드에 자식노드가 있는지의 여부확인
+        const $test = document.getElementById('test');
+        console.log($test.hasChildNodes()); //text노드가 있을시 공백도 포함해서 카운팅=true확률 up
+
+        //텍스트 노드를 제외한 요소노드의 존재여부확인
+        console.log(!!$test.children.length); //논리반전 2번
+    </script>
+
+</body>
+</html>
