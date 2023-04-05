@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassCtrl</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: lightgray;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 100px;
+        }
+        .red{
+            color:  red;
+        }
+
+        /* 아직 적용되지 않은 효과 */
+        .blue{
+            color: blue;
+        }
+        .circle{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box red">Hello</div>
+
+    <script>
+        const $box = document.querySelector('.box');
+        
+        //class속성을 얻기위한 식
+        console.log($box.attributes.class.value); 
+        console.log($box.getAttribute('class')); //위와 동등
+        console.log($box.className);//위와동등 
+
+        // $box.setAttribute('class','blue');//이렇게 적으면 box속성이 사라짐!
+        // $box.setAttribute('class','box blue');//이렇게 적어야함!
+        // $box.className = 'box blue';//위와 동등
+
+        //class조작할때는 classList프로퍼티를 사용하는게 좋음!
+        console.log($box.classList); //유사배열객체
+
+        //요소에 class 추가
+        // $box.className = 'box blue circle';
+        $box.classList.add('circle'); //circle class추가
+        $box.classList.add('abc','efg','hi'); //class 여러개 한 번에 추가가능!
+
+        //요소의 특정클래스를 교체
+        $box.classList.replace('red','blue'); //red만 blue로 바꾸기
+
+        //요소의 특정 클래스를 삭제
+        $box.classList.remove('circle'); //circle만 삭제
+        $box.classList.remove('abc','efg','hi'); //여러개 삭제 가능!
+
+        //요소에 특정 클래스가 존재하는지 확인
+        console.log($box.classList.contains('red'));
+
+        //toggle(): 해당 클래스가 존재하면 삭제!, 존재하지 않으면 추가!
+        $box.classList.toggle('circle');
+        $box.classList.toggle('blue');
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.KeyboardEvent</title>
+</head>
+<body>
+    <input type="text">
+    <p class="msg"></p>
+    <script>
+        const $input = document.querySelector('input');
+        const $msg = document.querySelector('.msg');
+
+        $input.addEventListener('keyup',e =>{//keydown = 눌렀을때, keyup눌렀다가 뗐을때
+            // console.log('키가... 눌렸다고?');
+            //console.log(e.key);
+            if(e.key ==='Enter'){//Enter키가 눌렸을 때
+                $msg.textContent = e.target.value;
+                e.target.value ='';
+            } else if(e.key ==='Escape'){
+                $msg.textContent = '';
+            }
+        });
+
+    </script>
+</body>
+</html>

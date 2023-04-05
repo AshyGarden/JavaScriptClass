@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InlineStyleCtrl</title>
+</head>
+<body>
+    
+    <div id="h" style="color: red; font-size: 3rem;">Hello</div>
+    
+    <script>
+        
+        const $h = document.getElementById('h');
+        //모두 인라인으로 처리됨!(1000점 처리) = 스타일을 덮어버리겠다는 뜻
+        //style 프로퍼티로 지정한 스타일은 인라인으로적용
+        ///대부분의 css문법보다 더 우선시됨.
+        //케발케이스로 적용된 css속성을 카멜케이스로 접근하면됨.
+        $h.style.color='orange';
+        $h.style.background = 'orangered';
+        $h.style.fontSize = '50px';
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.Case-Attribute</title>
+</head>
+<body>
+
+    <!-- 잘 쓰이지 않음-(길어서 파악 어려워짐) -->
+    <button type="button" id="btn3" onmouseleave="greeting()">마우스를 치우세요!</button>
+    <button type="button" id="btn2" onmouseenter="greeting()">마우스를 올리세요!</button>
+    <button type="button" id="btn1" onclick="greeting()">클릭하세요!</button><!-- 비동기 방식(클릭시에 실행!) -->
+
+    <script>
+        //이벤트핸들러(브라우저에게 전해줄 콜백함수)정의
+        function greeting() {
+            alert('hello~');
+        }
+        /* JS -> hover없음! -> mouseenter,mouseleave 또는 mouseover,mouseout로 가능 */
+
+
+    </script>
+</body>
+</html>

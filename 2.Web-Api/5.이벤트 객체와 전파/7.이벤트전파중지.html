@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.이벤트전파중지</title>
+    <style>
+        .root {
+            width: 500px;
+            height: 500px;
+            background: red;
+        }
+
+        .parent {
+            width: 50%;
+            height: 50%;
+            background: orange;
+        }
+
+        .child {
+            width: 50%;
+            height: 50%;
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://www.naver.com/">네이버로 이동!</a>
+    <br>
+    <div class="root">
+        <div class="parent">
+            <div class="child"></div>
+        </div>
+    </div>
+
+    <script>
+        //bubbling() (하위요소부터 호출->상위요소가 맨마지막으로호출)
+        //capturing(true) (상위요소부터 호출->하위요소가 맨마지막으로호출)
+        document.querySelector('.root').addEventListener('click', e => {
+            alert('root');
+        }, true);
+        document.querySelector('.parent').addEventListener('click', e => {
+            alert('parent');
+            // e.stopPropagation(); //이벤트 전파를 막는 매서드
+            //child를 누르면 child안나옴 (반대 방향일경우도 비슷하게 동일하게 동작)
+        }, true);
+        document.querySelector('.child').addEventListener('click', e => {
+            alert('child');
+            e.stopPropagation();
+        });
+
+        const $link = document.querySelector('a');
+        $link.addEventListener('click',e=>{
+            if(!confirm('정말 이동하시겠습니까?')){
+                // return;//a의 고유기능을 막을수 없음!
+                //이벤트는 return되지만, a는 return으로 막을수 없기때문에 취소를 눌러도 그대로 이동됨.
+                e.preventDefault();//태그의 고유기능을 막음
+            }
+        })
+    </script>
+</body>
+
+</html>

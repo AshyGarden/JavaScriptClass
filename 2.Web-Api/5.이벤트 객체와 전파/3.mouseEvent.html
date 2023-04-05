@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.MouseEvent</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: #fff700;
+            border: 5px solid orange;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    
+    <script>
+        //드래그 대상요소 취득
+        const $box = document.querySelector('.box');
+
+        //드래그 시작지점 마우스 포인터 위치
+        const initialMousePos = {
+            x:0,
+            y:0
+        };
+
+        //offset: 이동할 거리
+        const offset = {
+            x:0,
+            y:0
+        };
+
+        //마우스 이동 이벤트 핸들러 정의
+        const move = function(e){
+            //offset구하기 = 현재 드래그 하는 시점의 마우스 포인터 좌표 - 드래그 시작지점좌표
+
+            console.log(`이동하기전 x: ${offset.x}, y: ${offset.y}`);
+            offset.x = e.clientX-initialMousePos.x;
+            offset.y = e.clientY-initialMousePos.y;
+            
+            console.log(`이동한 후 x: ${offset.x}, y: ${offset.y}`);
+            $box.style.left = offset.x+'px';
+            $box.style.top = offset.y+'px';
+        };
+
+        //mousedown(마우스 버튼을 눌렀을 때) 이벤트 발생시 드래그시작지점의 마우스포인터 좌표를 저장.
+        $box.addEventListener('mousedown',function(e){
+            initialMousePos.x = e.clientX-offset.x;// 시작위치를 빼줘야 시작지점이 그대로유지됨!
+            initialMousePos.y = e.clientY-offset.y;
+
+            console.log(`드래그 시작지점 x: ${initialMousePos.x}`);
+            console.log(`드래그 시작지점 y: ${initialMousePos.y}`);
+
+            //마우스 이동이 시작된다면, 따로 선언한 move함수를 호출
+            document.addEventListener('mousemove',move);
+        });
+
+        //mouseup: 마우스를 뗏을때 mousemove이벤트를 제거해서 박스이동중지
+        document.addEventListener('mouseup',function(){
+            document.removeEventListener('mousemove',move);//기존에 있던 이벤트 제거
+        })
+
+    </script>
+</body>
+</html>
