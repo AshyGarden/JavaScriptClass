@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드이동</title>
+</head>
+<body>
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Grape</li>
+    </ul>
+
+    <script>
+        const $fruits = document.getElementById('fruits');
+
+        //destructing
+        const[$apple, $banana, $grape] = [...$fruits.children];
+        const $mango = document.createElement('li');
+        $mango.textContent = 'Mango';
+
+        //맨 마지막에 추가
+        $fruits.appendChild($mango);
+
+        //이미 활성화된 요소를 추가할시
+        $fruits.appendChild($banana); //재추가=위치가 변경됨
+        $fruits.insertBefore($apple, $mango);//재추가=위치가 변경됨
+        
+        //맨마지막 요소노드 이전
+        $fruits.insertBefore($grape, $fruits.lastElementChild);
+
+
+    </script>
+</body>
+</html>

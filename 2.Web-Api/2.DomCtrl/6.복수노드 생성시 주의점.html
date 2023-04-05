@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복수노드 생성 주의점</title>
+</head>
+<body>
+    <ul id="fruits">
+
+    </ul>
+    <script>
+        const $fruits = document.getElementById('fruits'); //live DOM
+        //과일이름 텍스트 배열
+        const fruitsName = ['Apple','Banana','Grape','Orange'];
+
+
+        /*아래 방법의 문제점
+        -이미 활성화 된 LiveDOM에다가 반복해서 가상DOM을 추가하는 행위는
+        메모리상 높은 코스트발생.
+        -활성화된 DOM을 변경-조작하는것은 가능한 횟수를 감소시켜줘야함.
+        */
+      /*for(let f of fruitsName){ //Virtual DOM
+            const $li = document.createElement('li');
+            $li.textContent =f;
+            $fruits.appendChild($li);
+        } */
+
+
+        //가상의 부모DOM생성 - 다른노드를 담는 임시 컨테이너역할의 DOM객체
+        const $frag = document.createDocumentFragment();
+        for(let f of fruitsName){        
+            const $li = document.createElement('li');
+            $li.textContent =f;
+            $frag.appendChild($li); //가상 객체에 담기
+        }
+
+        $fruits.appendChild($frag); //한번에 전달
+
+    </script>
+</body>
+</html>

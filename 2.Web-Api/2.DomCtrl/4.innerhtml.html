@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerhtml</title>
+    <style>
+        ul{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+    </ul>
+
+    <script>
+        const $fruits = document.getElementById('fruits');
+        console.log($fruits.innerHTML);
+        //노드추가
+        //    $fruits.innerHTML = '<li class="banana">Banana</li>'; //이렇게 적으면 apple을 banana가 대체함   
+        $fruits.innerHTML += '<li class="banana">Banana</li>';
+
+        //노드 삭제 lo
+        $fruits.innerHTML = '';
+
+        console.log(!!$fruits.children.length);
+
+        //innerHTML로만 노드 제어하지 말것!
+        //보안+성능문제
+        //HTML변환이 필요한 문자열에만 사용하고, 요소전체 삭제정도로만 사용.
+    </script>
+</body>
+
+</html>

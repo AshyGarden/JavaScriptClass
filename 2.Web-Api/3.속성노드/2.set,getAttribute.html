@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="name" value="kim" class="user-name">
+
+    <p id="text">Hello</p>
+
+    <script>
+        const $input =  document.querySelector('input[type="text"]');
+        //input의 value속성 값을 얻고싶을때
+        const inputValue = $input.getAttribute('value');
+        console.log(inputValue);
+        
+        //value속성 값을 변경
+        $input.setAttribute('value','valuable');
+
+        //p태그에 title속성 추가!
+        const $paragraph = document.getElementById('text');
+        $paragraph.setAttribute('title','hum');
+
+        console.log($input.hasAttribute('class'));
+        console.log($paragraph.hasAttribute('wow'));
+        if($input.hasAttribute('class')){
+            $input.removeAttribute('class')
+        } else{
+            //없으면 클래스 부여~
+        }
+
+    </script>
+</body>
+</html>

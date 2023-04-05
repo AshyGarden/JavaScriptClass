@@ -7,6 +7,50 @@
     <title>2.부모,형제노드 탐색</title>
 </head>
 <body>
-    
+    <div class="wrap">
+        <ul id="fruits">
+            <li class="apple">Apple</li>
+            <li class="banana">Banana</li>
+            <li class="grape">Grape</li>
+        </ul>
+    </div>
+
+    <table id="board">
+        <tr>
+            <td>A</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>D</td>
+        </tr>
+    </table>
+    <script>
+        const $banana = document.querySelector('.banana');
+        //부모노드 탐색
+        const $parent = $banana.parentNode;
+        console.log($parent);
+        
+        const $div = $banana.parentNode.parentNode;
+        console.log($div);
+        
+        //이전형제노드 탐색
+        const $prev = $banana.previousElementSibling;
+        console.log($prev);
+        
+        //다음형제노드 탐색
+        const $next = $banana.nextElementSibling;
+        console.log($next);
+        
+        const $next2 = $next.nextElementSibling;
+        console.log($next2); //null
+
+        //table태그는 자식태그로 tbody를 자동으로 삽입!
+        const $board = document.getElementById('board');
+        const $tbody = $board.children;
+        console.log($tbody[0].children); //tBody의 자식을 지목!
+        //tbody의 첫번쨰요소.의 자식=tr
+    </script>
+
 </body>
 </html>

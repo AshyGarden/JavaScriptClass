@@ -29,13 +29,20 @@
 
         //사용자의 입력을 수행하는 함수
         function inputNumber() {
-            
+            if(gameData.flag == true){
+                return true;
+            }
             //객체에서 min과 max의 값을 뽑아서 메세지를 완성.
             //객체 디스트럭쳐링으로 뽑아 보세요~
-            var answer = +prompt(`현재 남은횟수 ${gameData.countdown}번! 입력가능한 범위=[${gameData.min}~${gameData.max}]`);
-
+            if(gameData.countdown>0){
+                var answer = +prompt(`현재 남은횟수 ${gameData.countdown}번! 입력가능한 범위=[${gameData.min}~${gameData.max}]`);
+            } else{
+                var answer = +prompt(`현재 정답횟수 ${gameData.count}번! 입력가능한 범위=[${gameData.min}~${gameData.max}]`);
+            }
+            
             //사용자의 입력값을 객체에 추가          
             gameData.answer = answer;
+            gameData.flag =false;
             //입력값 검증 함수를 호출.
             return checkNumber();
         }
@@ -47,14 +54,17 @@
             if(gameData.answer>gameData.secret_num){
                 alert('Down!');
                 gameData.max = gameData.answer-1;
+                return false;
             } else if(gameData.answer<gameData.secret_num){
-                alert('Up');
+                alert('Up!');
                 gameData.min = gameData.answer+1;
+                return false;
             } else if(gameData.answer === gameData.secret_num){
+                alert('정답!')
+                gameData.flag =true;
                 return true;
             }
             alertCountDown(gameData.countdown);           
-            return false;
         }
 
         //사용자의 카운트다운을 체크하여 승리 여부를 알려주는 함수
@@ -70,9 +80,9 @@
         //사용자의 남은 카운트다운 횟수를 알려주는 함수
         function alertCountDown(countdown) {
             if(countdown>=0){
-                alert(`현재 남은 정답 입력개수 ${countdown}`);
+                alert(`현재 남은 정답 입력횟수: ${countdown}번`);
             } else{
-                alert(`횟수초과: 현재 정답 입력개수 ${gameData.count}`);
+                alert(`횟수초과! 현재 정답 입력횟수: ${gameData.count}번!`);
             }
         }
 
@@ -83,17 +93,15 @@
 
         (function () {
             alert('[UP & DOWN 게임 - 1 ~ 100 사이의 숫자를 맞춰보세요!]');
-            var sNum= gameData.secret_num;         
-            alert(`${sNum}`);
+            alert(`${gameData.secret_num}`);
             console.log('up&down start');
             //입력을 담당하는 함수를 호출할 예정.
             while (!inputNumber()) {
-                inputNumber();
                 //true가 리턴되면 프로그램 종료.
-                //false가 리턴되면 게임 계속 진행.
-                 
+                //false가 리턴되면 게임 계속 진행.            
+                inputNumber();
             }
-            checkCountDown();
+            checkCountDown(gameData.countdown);
 
         }());
     </script>
