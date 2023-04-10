@@ -43,11 +43,12 @@
         //이벤트 핸들러 함수
         function activate(e) {
             //이벤트 발생 타겟이 특정요소인지 검증.
-            if (!e.target.matches('#fruits > li')) {
+            if (!e.target.matches('#fruits > li')) {/* 이벤트가 발생하지 않는다면! */
                 console.log('이곳은 이벤트가 발생되지 않는 곳입니다.');
                 return;
             }
 
+            //추가 할때만 따지는 조건이라고 생각하는게 좋음.
             /*for (let $li of $liList) {
                 if($li.classList.contains('active')){
                     $li.classList.remove('active');
@@ -60,7 +61,7 @@
                 //toggle매서드의 두번째 매개값으로 논리값을 전달 할수있는데,
                 //해당논리값이 true면 지정한 class를 추가하고, false일경우 지정한 클래스를 삭제함!
                 $li.classList.toggle('active', $li === e.target);
-                //있을때 제거는 그대로, 없으면 true 일때만 추가함!
+                //있을때는 그대로 제거, 없으면 true 일때만 추가함!
             }
 
             //메세지 영역에 이벤트가 발생된 과일 이름을 추가.

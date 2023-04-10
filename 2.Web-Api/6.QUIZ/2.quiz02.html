@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz02</title>
+</head>
+<body>
+    <h2>자바 스크립트 카운트</h2>
+    <input type="text" id="result" value="0" readonly>
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+
+    <script>
+        const $result = document.getElementById('result');
+        
+        document.getElementById('plus').onclick= function(e){
+            $result.value++;
+        };
+        document.getElementById('minus').onclick= function(e){
+            // console.log($result.value);
+            $result.value--;
+            if($result.value < 0){
+                alert('0미만으로 내릴수 없습니다.');
+                $result.value = 0;
+            }
+        };
+
+    </script>
+</body>
+</html>

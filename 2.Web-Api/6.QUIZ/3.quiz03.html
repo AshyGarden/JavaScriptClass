@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz03</title>
+</head>
+
+<body>
+    <h2>단어를 선택하세요</h2>
+    <p class="msg1"></p>
+    <p class="msg2"></p>
+
+    <hr>
+    <select id="selector">
+        <option value="선택">선택</option>
+        <option value="영어">Hello</option>
+        <option value="한국어">안녕</option>
+        <option value="중국어">니하오!</option>
+    </select>
+
+    <script>
+        const $selector = document.getElementById('selector');
+        // const $msg1 = document.getElementsByClassName('msg1');
+        const $msg2 = document.querySelector('.msg2');//1개만 가져오는 것이면 query로 가져오자!
+
+        $selector.addEventListener('change', function (e) {
+            // console.log(e.target.value);          
+            //console.log($msg.textContent);
+            // $msg1[0].textContent= `${e.target.value}`; //유사배열이라 번호 붙여줘야함!
+            $msg2.textContent = `${e.target.value}`;
+        });
+    </script>
+</body>
+
+</html>

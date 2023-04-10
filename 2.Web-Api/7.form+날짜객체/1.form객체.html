@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formObj1</title>
+</head>
+
+<body>
+
+    <form action="#" name="regForm">
+        아이디: <input type="text" name="id"> <br>
+        비밀번호: <input type="password" name="pw"> <br>
+        번호:
+        <div>
+            <select name="phone">
+                <option>010</option>
+                <option>011</option>
+                <option>018</option>
+            </select>
+            - <input type="text" name="phone2">
+            - <input type="text" name="phone3">
+        </div>
+
+        자기소개: <br>
+        <textarea name="intro" cols="50" rows="5"></textarea>
+        <br>
+
+        분야:
+        <input type="checkbox" name="inter">Java
+        <input type="checkbox" name="inter">DB
+        <input type="checkbox" name="inter">Jsp
+        <input type="checkbox" name="inter">JavaScript
+
+        <button type="button" id="regist" onclick="check()">가입</button><!-- button defualt submit -->
+        <!-- 버튼을 무조건 버튼타입을 달아줘야함!, 
+             타입을 달아주지 않으면 자동으로 submit이 인식됨 
+             버튼에 이벤트를 걸어서 입력값검증 로직등을 구현하고싶다면 
+             반드시 type="button"으로 설정해 놓아야함-->
+
+        <input type="reset" value="초기화">
+        <!--  <input type="submit" value="회원가입">  input default text-->
+    </form>
+
+    <script>
+        /* 
+        -form 객체는 document객체의 하위객체중 하나
+        유일하게 name속성만으로 form요소에 접근 가능
+
+        -form에도 name이 있어야하며, name으로 내부요소에 접근가능
+        -document.폼이름.인풋이름 <-이런식으로 접근
+        */
+        /*
+        value - 값을 반환
+        checked - 체크되어있다면 true , 그렇지않으면 false 
+        disabled - 비활성화되어있다면 true , 그렇지않으면 false
+        length - 요소의 길이반환
+        focus() - 요소에 포커싱
+        sunmit() - form내부 입력방식 제출(action 경로로 전송) 
+         */
+        function check() {
+            console.log('check 함수 발동!');
+            const $form = document.regForm;
+            console.log($form);
+
+            if ($form.id.value === '') { //id값이 존재하지 않는다면
+                alert('id는 필수값입니다.');
+                $form.id.focus();
+                return; //문제가 있으니 return(이벤트 강제종료)
+            } else if ($form.id.value.length < 4) { //id가 4글자 이하일때              
+                alert('id는 4글자 이상이여야 합니다.');
+                $form.id.focus();
+                return;
+            } else if ($form.pw.value === '') { //pw값이 존재하지 않는다면
+                alert('pw는 필수값입니다.');
+                $form.pw.focus();
+                return;
+            } else if ($form.pw.value.length < 8) { //pw가 4글자 이하일때
+                alert('pw는 8글자 이상이여야 합니다.');
+                $form.pw.focus();
+                return;
+            } else {
+                //console.log($form.inter); //=$form.children
+                let flag = false;
+                for (let $ele of [...$form.inter]) {
+                    if ($ele.checked) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) { //분야 체크 1개도 하지 않았을 때
+                    alert('분야는 1개이상 체크하세요');
+                    return;
+                }
+            }
+
+            //confirm =>사용자가 확인 true, 취소 false;
+            if (confirm('회원가입 하시겠습니까?')) {
+                $form.summit(); //form제출!
+            } else {
+                alert('회원가입을 취소합니다.');
+                return;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WindowInterval</title>
+</head>
+<body>
+
+    <button class="stop">멈춰!</button>
+    <script>
+        //setInterval =>일정시간마다 함수를 반복 실행한다.
+        //매개변수로 (실행함수, 인터벌 시간 밀리초)가 들어간다.
+
+        const func = setInterval(()=>{
+            console.log('하하');
+            console.log('호호');
+        }, 900);
+
+        //clearInterval(인터벌함수)=>인터벌을 중지
+        document.querySelector('.stop').onclick = function(){
+            clearInterval(func);
+        }
+    </script>
+</body>
+</html>
